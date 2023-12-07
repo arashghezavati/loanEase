@@ -13,9 +13,20 @@ const port = process.env.PORT || 4000; // Set port dynamically or use a default 
 
 app.use(cors());
 
-// Allow requests from your Vercel-hosted frontend
+// Allow requests from multiple origins
+const allowedOrigins = [
+  'https://loanease-ps0q8e742-iamjeel1.vercel.app',
+  'https://www.loanease.ca',
+];
+
 const corsOptions = {
-  origin: 'https://loanease-ps0q8e742-iamjeel1.vercel.app',
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
 
 app.use(cors(corsOptions));
