@@ -13,9 +13,9 @@ const port = process.env.PORT || 4000; // Set port dynamically or use a default 
 
 app.use(cors());
 
-// Allow requests from http://localhost:3000
+// Allow requests from your Vercel-hosted frontend
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://loanease-ps0q8e742-iamjeel1.vercel.app',
 };
 
 app.use(cors(corsOptions));
